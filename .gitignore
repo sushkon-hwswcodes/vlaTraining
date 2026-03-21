@@ -44,3 +44,21 @@ imgui.ini
 # testing
 .coverage*
 htmlcov/
+
+# Video and recording files
+*.mp4
+*.webm
+*.gif
+*.avi
+*.mov
+
+# Model checkpoints and large binaries
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+
+# Training run artifacts
+runs/*/events.out.tfevents.*
+wandb/

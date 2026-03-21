@@ -181,37 +181,30 @@ class NatureCNN(nn.Module):
 
         self.out_features = 0
         feature_size = 256
-        in_channels=sample_obs["rgb"].shape[-1]
-        image_size=(sample_obs["rgb"].shape[1], sample_obs["rgb"].shape[2])
 
-
-        # here we use a NatureCNN architecture to process images, but any architecture is permissble here
-        cnn = nn.Sequential(
-            nn.Conv2d(
-                in_channels=in_channels,
-                out_channels=32,
-                kernel_size=8,
-                stride=4,
-                padding=0,
-            ),
-            nn.ReLU(),
-            nn.Conv2d(
-                in_channels=32, out_channels=64, kernel_size=4, stride=2, padding=0
-            ),
-            nn.ReLU(),
-            nn.Conv2d(
-                in_channels=64, out_channels=64, kernel_size=3, stride=1, padding=0
-            ),
-            nn.ReLU(),
-            nn.Flatten(),
-        )
-
-        # to easily figure out the dimensions after flattening, we pass a test tensor
-        with torch.no_grad():
-            n_flatten = cnn(sample_obs["rgb"].float().permute(0,3,1,2).cpu()).shape[1]
+        def make_cnn(in_channels, sample_tensor):
+            cnn = nn.Sequential(
+                nn.Conv2d(in_channels=in_channels, out_channels=32, kernel_size=8, stride=4, padding=0),
+                nn.ReLU(),
+                nn.Conv2d(in_channels=32, out_channels=64, kernel_size=4, stride=2, padding=0),
+                nn.ReLU(),
+                nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, stride=1, padding=0),
+                nn.ReLU(),
+                nn.Flatten(),
+            )
+            with torch.no_grad():
+                n_flatten = cnn(sample_tensor.float().permute(0, 3, 1, 2).cpu()).shape[1]
             fc = nn.Sequential(nn.Linear(n_flatten, feature_size), nn.ReLU())
-        extractors["rgb"] = nn.Sequential(cnn, fc)
+            return nn.Sequential(cnn, fc)
+
+        # RGB extractor
+        extractors["rgb"] = make_cnn(sample_obs["rgb"].shape[-1], sample_obs["rgb"])
         self.out_features += feature_size
+
+        # Depth extractor (depth is H x W x 1)
+        if "depth" in sample_obs:
+            extractors["depth"] = make_cnn(sample_obs["depth"].shape[-1], sample_obs["depth"])
+            self.out_features += feature_size
 
         if "state" in sample_obs:
             # for state data we simply pass it through a single linear layer
@@ -227,8 +220,9 @@ class NatureCNN(nn.Module):
         for key, extractor in self.extractors.items():
             obs = observations[key]
             if key == "rgb":
-                obs = obs.float().permute(0,3,1,2)
-                obs = obs / 255
+                obs = obs.float().permute(0, 3, 1, 2) / 255
+            elif key == "depth":
+                obs = obs.float().permute(0, 3, 1, 2)
             encoded_tensor_list.append(extractor(obs))
         return torch.cat(encoded_tensor_list, dim=1)
 
@@ -304,15 +298,15 @@ if __name__ == "__main__":
     device = torch.device("cuda" if torch.cuda.is_available() and args.cuda else "cpu")
 
     # env setup
-    env_kwargs = dict(obs_mode="rgb", render_mode=args.render_mode, sim_backend="physx_cuda")
+    env_kwargs = dict(obs_mode="rgbd", render_mode=args.render_mode, sim_backend="physx_cuda")
     if args.control_mode is not None:
         env_kwargs["control_mode"] = args.control_mode
     eval_envs = gym.make(args.env_id, num_envs=args.num_eval_envs, reconfiguration_freq=args.eval_reconfiguration_freq, **env_kwargs)
     envs = gym.make(args.env_id, num_envs=args.num_envs if not args.evaluate else 1, reconfiguration_freq=args.reconfiguration_freq, **env_kwargs)
 
     # rgbd obs mode returns a dict of data, we flatten it so there is just a rgbd key and state key
-    envs = FlattenRGBDObservationWrapper(envs, rgb=True, depth=False, state=args.include_state)
-    eval_envs = FlattenRGBDObservationWrapper(eval_envs, rgb=True, depth=False, state=args.include_state)
+    envs = FlattenRGBDObservationWrapper(envs, rgb=True, depth=True, state=args.include_state)
+    eval_envs = FlattenRGBDObservationWrapper(eval_envs, rgb=True, depth=True, state=args.include_state)
 
     if isinstance(envs.action_space, gym.spaces.Dict):
         envs = FlattenActionSpaceWrapper(envs)
