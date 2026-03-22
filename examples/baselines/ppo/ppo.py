@@ -1,6 +1,7 @@
 from collections import defaultdict
 import os
 import random
+import subprocess
 import time
 from dataclasses import dataclass
 from typing import Optional
@@ -111,6 +112,17 @@ class Args:
     """the mini-batch size (computed in runtime)"""
     num_iterations: int = 0
     """the number of iterations (computed in runtime)"""
+
+def git_push_checkpoint(model_path: str):
+    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
+    try:
+        subprocess.run(["git", "add", model_path], cwd=repo_root, check=True)
+        subprocess.run(["git", "commit", "-m", f"checkpoint: {os.path.basename(model_path)}"], cwd=repo_root, check=True)
+        subprocess.run(["git", "push"], cwd=repo_root, check=True)
+        print(f"pushed checkpoint to git: {model_path}")
+    except subprocess.CalledProcessError as e:
+        print(f"git push failed (non-fatal): {e}")
+
 
 def layer_init(layer, std=np.sqrt(2), bias_const=0.0):
     torch.nn.init.orthogonal_(layer.weight, std)
@@ -298,6 +310,7 @@ if __name__ == "__main__":
             model_path = f"runs/{run_name}/ckpt_{iteration}.pt"
             torch.save(agent.state_dict(), model_path)
             print(f"model saved to {model_path}")
+            git_push_checkpoint(os.path.abspath(model_path))
         # Annealing the rate if instructed to do so.
         if args.anneal_lr:
             frac = 1.0 - (iteration - 1.0) / args.num_iterations
@@ -465,6 +478,7 @@ if __name__ == "__main__":
             model_path = f"runs/{run_name}/final_ckpt.pt"
             torch.save(agent.state_dict(), model_path)
             print(f"model saved to {model_path}")
+            git_push_checkpoint(os.path.abspath(model_path))
         logger.close()
     envs.close()
     eval_envs.close()
