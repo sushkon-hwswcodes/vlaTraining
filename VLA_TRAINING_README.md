@@ -144,7 +144,51 @@ DISPLAY=:1 python ppo.py \
 
 ---
 
-### Experiment 4 — PPO RGB Training (Work in Progress)
+### Experiment 4 — PPO ReplicaCAD PickCube (PickCubeReplicaCAD-v1)
+
+Trains a Fetch robot to pick up a cube inside a ReplicaCAD apartment scene using PPO on joint state observations.
+
+The environment (`PickCubeReplicaCAD-v1`) is a custom env defined in
+`mani_skill/envs/tasks/tabletop/pick_cube_replicacad.py`. It loads a
+ReplicaCAD scene, spawns a red cube on the floor ~1.5 m in front of the
+robot, and randomises the goal position above it each episode.
+
+**Download ReplicaCAD assets first (one-time):**
+```bash
+python -m mani_skill.utils.download_asset ReplicaCAD
+```
+
+**Train:**
+```bash
+cd examples/baselines/ppo
+
+DISPLAY=:1 python ppo.py \
+  --env_id="PickCubeReplicaCAD-v1" \
+  --num_envs=256 \
+  --update_epochs=8 \
+  --num_minibatches=32 \
+  --total_timesteps=10_000_000 \
+  --eval_freq=10 \
+  --num-steps=200
+```
+
+> **Note:** `--num_envs=256` (not 2048) because the ReplicaCAD scene
+> geometry is much heavier than a plain table. Lower if you hit GPU OOM.
+> `--num-steps=200` matches the env's `max_episode_steps`.
+
+**Evaluate a checkpoint:**
+```bash
+DISPLAY=:1 python ppo.py \
+  --env_id="PickCubeReplicaCAD-v1" \
+  --evaluate \
+  --checkpoint=runs/PickCubeReplicaCAD-v1__ppo__1__<timestamp>/final_ckpt.pt \
+  --num_eval_envs=1 \
+  --num-eval-steps=200
+```
+
+---
+
+### Experiment 5 — PPO RGB Training (Work in Progress)
 
 Trains a CNN-based policy from raw **RGB camera observations** instead of joint states. More realistic but slower to train.
 
