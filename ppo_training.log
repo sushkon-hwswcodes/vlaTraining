@@ -1,0 +1,403 @@
+Saving eval videos to runs/PickCube-v1__ppo__1__1775344311/videos
+Running training
+####
+args.num_iterations=390 args.num_envs=512 args.num_eval_envs=8
+args.minibatch_size=800 args.batch_size=25600 args.update_epochs=8
+####
+Epoch: 1, global_step=0
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=0.0
+eval_return_mean=2.909928321838379
+eval_episode_len_mean=50.0
+eval_reward_mean=0.05819856375455856
+eval_success_at_end_mean=0.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_1.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_1.pt']' returned non-zero exit status 1.
+SPS: 2352
+Epoch: 2, global_step=25600
+SPS: 3201
+Epoch: 3, global_step=51200
+SPS: 3620
+Epoch: 4, global_step=76800
+SPS: 3858
+Epoch: 5, global_step=102400
+SPS: 4007
+Epoch: 6, global_step=128000
+SPS: 4106
+Epoch: 7, global_step=153600
+SPS: 4151
+Epoch: 8, global_step=179200
+SPS: 4166
+Epoch: 9, global_step=204800
+SPS: 4203
+Epoch: 10, global_step=230400
+SPS: 4241
+Epoch: 11, global_step=256000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=0.0
+eval_return_mean=8.299968719482422
+eval_episode_len_mean=50.0
+eval_reward_mean=0.1659993827342987
+eval_success_at_end_mean=0.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_11.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_11.pt']' returned non-zero exit status 1.
+SPS: 3984
+Epoch: 12, global_step=281600
+SPS: 4037
+Epoch: 13, global_step=307200
+SPS: 4078
+Epoch: 14, global_step=332800
+SPS: 4114
+Epoch: 15, global_step=358400
+SPS: 4145
+Epoch: 16, global_step=384000
+SPS: 4176
+Epoch: 17, global_step=409600
+SPS: 4202
+Epoch: 18, global_step=435200
+SPS: 4226
+Epoch: 19, global_step=460800
+SPS: 4246
+Epoch: 20, global_step=486400
+SPS: 4265
+Epoch: 21, global_step=512000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=0.0
+eval_return_mean=13.251815795898438
+eval_episode_len_mean=50.0
+eval_reward_mean=0.26503634452819824
+eval_success_at_end_mean=0.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_21.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_21.pt']' returned non-zero exit status 1.
+SPS: 4122
+Epoch: 22, global_step=537600
+SPS: 4143
+Epoch: 23, global_step=563200
+SPS: 4161
+Epoch: 24, global_step=588800
+SPS: 4180
+Epoch: 25, global_step=614400
+SPS: 4197
+Epoch: 26, global_step=640000
+SPS: 4213
+Epoch: 27, global_step=665600
+SPS: 4227
+Epoch: 28, global_step=691200
+SPS: 4237
+Epoch: 29, global_step=716800
+SPS: 4238
+Epoch: 30, global_step=742400
+SPS: 4233
+Epoch: 31, global_step=768000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=0.0
+eval_return_mean=19.755046844482422
+eval_episode_len_mean=50.0
+eval_reward_mean=0.39510098099708557
+eval_success_at_end_mean=0.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_31.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_31.pt']' returned non-zero exit status 1.
+SPS: 4123
+Epoch: 32, global_step=793600
+SPS: 4131
+Epoch: 33, global_step=819200
+SPS: 4137
+Epoch: 34, global_step=844800
+SPS: 4145
+Epoch: 35, global_step=870400
+SPS: 4151
+Epoch: 36, global_step=896000
+SPS: 4157
+Epoch: 37, global_step=921600
+SPS: 4162
+Epoch: 38, global_step=947200
+SPS: 4170
+Epoch: 39, global_step=972800
+SPS: 4176
+Epoch: 40, global_step=998400
+SPS: 4181
+Epoch: 41, global_step=1024000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=0.0
+eval_return_mean=20.471637725830078
+eval_episode_len_mean=50.0
+eval_reward_mean=0.4094327390193939
+eval_success_at_end_mean=0.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_41.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_41.pt']' returned non-zero exit status 1.
+SPS: 4107
+Epoch: 42, global_step=1049600
+SPS: 4102
+Epoch: 43, global_step=1075200
+SPS: 4095
+Epoch: 44, global_step=1100800
+SPS: 4088
+Epoch: 45, global_step=1126400
+SPS: 4086
+Epoch: 46, global_step=1152000
+SPS: 4082
+Epoch: 47, global_step=1177600
+SPS: 4080
+Epoch: 48, global_step=1203200
+SPS: 4077
+Epoch: 49, global_step=1228800
+SPS: 4078
+Epoch: 50, global_step=1254400
+SPS: 4117
+Epoch: 51, global_step=1280000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=0.125
+eval_return_mean=21.4305419921875
+eval_episode_len_mean=50.0
+eval_reward_mean=0.4286108613014221
+eval_success_at_end_mean=0.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_51.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_51.pt']' returned non-zero exit status 1.
+SPS: 4054
+Epoch: 52, global_step=1305600
+SPS: 4054
+Epoch: 53, global_step=1331200
+SPS: 4054
+Epoch: 54, global_step=1356800
+SPS: 4053
+Epoch: 55, global_step=1382400
+SPS: 4056
+Epoch: 56, global_step=1408000
+SPS: 4060
+Epoch: 57, global_step=1433600
+SPS: 4063
+Epoch: 58, global_step=1459200
+SPS: 4066
+Epoch: 59, global_step=1484800
+SPS: 4086
+Epoch: 60, global_step=1510400
+SPS: 4088
+Epoch: 61, global_step=1536000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=0.25
+eval_return_mean=24.948333740234375
+eval_episode_len_mean=50.0
+eval_reward_mean=0.49896669387817383
+eval_success_at_end_mean=0.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_61.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_61.pt']' returned non-zero exit status 1.
+SPS: 4039
+Epoch: 62, global_step=1561600
+SPS: 4041
+Epoch: 63, global_step=1587200
+SPS: 4043
+Epoch: 64, global_step=1612800
+SPS: 4046
+Epoch: 65, global_step=1638400
+SPS: 4048
+Epoch: 66, global_step=1664000
+SPS: 4074
+Epoch: 67, global_step=1689600
+SPS: 4076
+Epoch: 68, global_step=1715200
+SPS: 4088
+Epoch: 69, global_step=1740800
+SPS: 4115
+Epoch: 70, global_step=1766400
+SPS: 4124
+Epoch: 71, global_step=1792000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=0.875
+eval_return_mean=31.569799423217773
+eval_episode_len_mean=50.0
+eval_reward_mean=0.6313960552215576
+eval_success_at_end_mean=0.75
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_71.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_71.pt']' returned non-zero exit status 1.
+SPS: 4077
+Epoch: 72, global_step=1817600
+SPS: 4076
+Epoch: 73, global_step=1843200
+SPS: 4074
+Epoch: 74, global_step=1868800
+SPS: 4069
+Epoch: 75, global_step=1894400
+SPS: 4063
+Epoch: 76, global_step=1920000
+SPS: 4074
+Epoch: 77, global_step=1945600
+SPS: 4075
+Epoch: 78, global_step=1971200
+SPS: 4076
+Epoch: 79, global_step=1996800
+SPS: 4095
+Epoch: 80, global_step=2022400
+SPS: 4095
+Epoch: 81, global_step=2048000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=1.0
+eval_return_mean=37.01193618774414
+eval_episode_len_mean=50.0
+eval_reward_mean=0.7402387261390686
+eval_success_at_end_mean=1.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_81.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_81.pt']' returned non-zero exit status 1.
+SPS: 4056
+Epoch: 82, global_step=2073600
+SPS: 4055
+Epoch: 83, global_step=2099200
+SPS: 4055
+Epoch: 84, global_step=2124800
+SPS: 4056
+Epoch: 85, global_step=2150400
+SPS: 4057
+Epoch: 86, global_step=2176000
+SPS: 4057
+Epoch: 87, global_step=2201600
+SPS: 4058
+Epoch: 88, global_step=2227200
+SPS: 4059
+Epoch: 89, global_step=2252800
+SPS: 4068
+Epoch: 90, global_step=2278400
+SPS: 4069
+Epoch: 91, global_step=2304000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=0.75
+eval_return_mean=33.87767791748047
+eval_episode_len_mean=50.0
+eval_reward_mean=0.6775534749031067
+eval_success_at_end_mean=0.75
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_91.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_91.pt']' returned non-zero exit status 1.
+SPS: 4048
+Epoch: 92, global_step=2329600
+SPS: 4050
+Epoch: 93, global_step=2355200
+SPS: 4065
+Epoch: 94, global_step=2380800
+SPS: 4066
+Epoch: 95, global_step=2406400
+SPS: 4066
+Epoch: 96, global_step=2432000
+SPS: 4085
+Epoch: 97, global_step=2457600
+SPS: 4104
+Epoch: 98, global_step=2483200
+SPS: 4105
+Epoch: 99, global_step=2508800
+SPS: 4116
+Epoch: 100, global_step=2534400
+SPS: 4116
+Epoch: 101, global_step=2560000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=1.0
+eval_return_mean=38.656044006347656
+eval_episode_len_mean=50.0
+eval_reward_mean=0.7731209397315979
+eval_success_at_end_mean=1.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_101.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_101.pt']' returned non-zero exit status 1.
+SPS: 4102
+Epoch: 102, global_step=2585600
+SPS: 4122
+Epoch: 103, global_step=2611200
+SPS: 4139
+Epoch: 104, global_step=2636800
+SPS: 4155
+Epoch: 105, global_step=2662400
+SPS: 4155
+Epoch: 106, global_step=2688000
+SPS: 4172
+Epoch: 107, global_step=2713600
+SPS: 4190
+Epoch: 108, global_step=2739200
+SPS: 4208
+Epoch: 109, global_step=2764800
+SPS: 4219
+Epoch: 110, global_step=2790400
+SPS: 4218
+Epoch: 111, global_step=2816000
+Evaluating
+Evaluated 400 steps resulting in 8 episodes
+eval_success_once_mean=1.0
+eval_return_mean=39.037376403808594
+eval_episode_len_mean=50.0
+eval_reward_mean=0.7807475328445435
+eval_success_at_end_mean=1.0
+model saved to runs/PickCube-v1__ppo__1__1775344311/ckpt_111.pt
+The following paths are ignored by one of your .gitignore files:
+examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311
+hint: Use -f if you really want to add them.
+hint: Turn this message off by running
+hint: "git config advice.addIgnoredFile false"
+git push failed (non-fatal): Command '['git', 'add', '/root/vlaTraining/examples/baselines/ppo/runs/PickCube-v1__ppo__1__1775344311/ckpt_111.pt']' returned non-zero exit status 1.
+SPS: 4203
+Epoch: 112, global_step=2841600
+SPS: 4218
+Epoch: 113, global_step=2867200
+SPS: 4218
+Epoch: 114, global_step=2892800
+SPS: 4233
+Epoch: 115, global_step=2918400
