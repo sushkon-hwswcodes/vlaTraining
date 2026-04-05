@@ -80,6 +80,13 @@ PYTHONPATH=/root/vlaTraining/cap-x python3 -u -m capx.envs.launch \
   - `outputs/ollama_qwen2.5-coder:7b-instruct-q4_K_M/qwen_shape_generalization/archive_20260405_072609_pre_promptfix_cleanup`
   - kept only the latest run's 30 trial folders in `qwen_shape_generalization/`.
 
+### New pre-Phase-3 step: Phase 2.75 — Green target in clutter
+- **Goal:** pick a GREEN target object among multiple RED distractors.
+- **New simulator:** `capx/envs/simulators/robosuite_green_target_clutter.py`
+- **New config:** `env_configs/shape_generalization/franka_qwen_green_target_clutter.yaml`
+- **API update:** case-insensitive green-target aliases in `sample_grasp_pose` / `get_object_pose`.
+- **Smoke test:** `benchmark_green_target_clutter_smoke.log` → `1/1` task-complete.
+
 ### Next step: re-run benchmark with corrected success metric
 ```bash
 cd /root/vlaTraining/cap-x

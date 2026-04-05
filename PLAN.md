@@ -92,6 +92,27 @@ Enable a robot arm to pick up objects of **arbitrary shapes and sizes** using a 
 
 ---
 
+## Phase 2.75 — Target Selection in Clutter (Green Target, Red Distractors)
+
+**Problem:** Current lift benchmarks are mostly single-object scenes. Before moving to vision-only input, we should verify that the policy can select the correct target in clutter.
+
+**What to do:**
+1. Use cluttered scene setup with one green target object + multiple random red distractors
+2. Prompt task: pick up the green target and ignore red objects
+3. Keep privileged control API and current grasp pipeline (`sample_grasp_pose`)
+4. Run smoke test then 30-trial benchmark
+
+**Implemented assets (April 5, 2026):**
+- `capx/envs/simulators/robosuite_green_target_clutter.py`
+- `env_configs/shape_generalization/franka_qwen_green_target_clutter.yaml`
+- API alias updates in `capx/integrations/franka/control_privileged.py` for robust green-target naming
+
+**Smoke result:** 1/1 success (`benchmark_green_target_clutter_smoke.log`).
+
+**Definition of done:** 30-trial clutter benchmark complete with target-selection success rate.
+
+---
+
 ## Phase 4 (Optional) — Upper Bound: Frontier Model Comparison
 
 Run the same Phase 2 benchmark with a frontier model (GPT-4o or Claude via API) to establish the upper bound of what Code-as-Policy can achieve on this task with a stronger reasoner.
@@ -133,4 +154,4 @@ This makes the head-to-head comparison (RL vs. CaP-X on arbitrary shapes) scient
 
 ## Immediate Next Step
 
-**Phase 2 follow-up:** Add explicit per-trial shape logging (shape + size + success flag) and rerun / post-process results to report box/cylinder/ball success breakdown cleanly.
+**Phase 2.75 follow-up:** Run 30-trial green-target clutter benchmark and log target-selection success, then proceed to Phase 3 vision input.
