@@ -71,6 +71,10 @@ PYTHONPATH=/root/vlaTraining/cap-x python3 -u -m capx.envs.launch \
 - **Fix applied:** In `LiftShape`, success now requires both:
   - object lifted by `>0.04m` above its own reset height, and
   - active grasp contact (`_check_grasp`) by the gripper.
+- **Prompt/API regression fixed (April 5, 2026):**
+  - Shape prompt now uses `sample_grasp_pose("object")` as primary grasp target (instead of deriving grasp Z from `get_object_pose + size`).
+  - `sample_grasp_pose()` now accepts `"object"` aliases directly.
+  - Smoke test: `benchmark_shape_smoke_promptfix.log` completed with `1/1` task-complete.
 
 ### Next step: re-run benchmark with corrected success metric
 ```bash
