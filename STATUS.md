@@ -4,7 +4,7 @@
 
 ---
 
-## Current Status: Phase 2 in progress — shape generalization benchmark pending
+## Current Status: Phase 2 in progress — benchmark completed once; rerun needed with corrected success metric
 
 ---
 
@@ -54,7 +54,7 @@ PYTHONPATH=/root/vlaTraining/cap-x python3 -u -m capx.envs.launch \
 **Objects:** Box, cylinder, ball — randomly chosen per episode  
 **Method:** Privileged state — LLM calls `get_object_shape()` → adapts grasp z-offset
 
-### Files created (not yet benchmarked):
+### Files created:
 | File | Purpose |
 |---|---|
 | `capx/third_party/robosuite/robosuite/environments/manipulation/lift_shape.py` | LiftShape env — random shape per reset |
@@ -62,15 +62,24 @@ PYTHONPATH=/root/vlaTraining/cap-x python3 -u -m capx.envs.launch \
 | `capx/envs/simulators/__init__.py` | Registers `franka_robosuite_shape_lift_low_level` |
 | `capx/integrations/franka/control_privileged.py` | Added `get_object_shape()`, fixed bbox extents |
 | `env_configs/shape_generalization/franka_qwen_shape.yaml` | Phase 2 benchmark config |
+| `capx/third_party/robosuite/robosuite/environments/manipulation/lift_shape.py` | Updated success check to require lift-from-reset + grasp contact |
 
-### Next step: run smoke test (1 trial), then full 30-trial benchmark
+### Phase 2 benchmark result (first run)
+- **Run:** `benchmark_shape_generalization.log`
+- **Result:** `6/30` task-complete (`20%`), average reward `0.236`
+- **Issue identified:** Success condition in inherited Lift logic used fixed threshold (`object_center_z > table_z + 0.04`), which can overcount success for larger randomized shapes.
+- **Fix applied:** In `LiftShape`, success now requires both:
+  - object lifted by `>0.04m` above its own reset height, and
+  - active grasp contact (`_check_grasp`) by the gripper.
+
+### Next step: re-run benchmark with corrected success metric
 ```bash
 cd /root/vlaTraining/cap-x
 export MUJOCO_GL=osmesa && export DISPLAY=:1 && export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 PYTHONPATH=/root/vlaTraining/cap-x python3 -u -m capx.envs.launch \
   --config-path env_configs/shape_generalization/franka_qwen_shape.yaml \
   --model "ollama/qwen2.5-coder:7b-instruct-q4_K_M" \
-  --total-trials 1 --num-workers 1 --temperature 0.3
+  --total-trials 30 --num-workers 1 --temperature 0.3 | tee benchmark_shape_generalization_after_fix.log
 ```
 
 ---
