@@ -64,9 +64,10 @@ PYTHONPATH=/root/vlaTraining/cap-x python3 -u -m capx.envs.launch \
 | `env_configs/shape_generalization/franka_qwen_shape.yaml` | Phase 2 benchmark config |
 | `capx/third_party/robosuite/robosuite/environments/manipulation/lift_shape.py` | Updated success check to require lift-from-reset + grasp contact |
 
-### Phase 2 benchmark result (first run)
+### Phase 2 benchmark result (latest)
 - **Run:** `benchmark_shape_generalization.log`
-- **Result:** `6/30` task-complete (`20%`), average reward `0.236`
+- **Updated run:** `benchmark_shape_generalization_after_promptfix.log`
+- **Result:** `25/30` task-complete (`83.3%`), average reward `0.871`
 - **Issue identified:** Success condition in inherited Lift logic used fixed threshold (`object_center_z > table_z + 0.04`), which can overcount success for larger randomized shapes.
 - **Fix applied:** In `LiftShape`, success now requires both:
   - object lifted by `>0.04m` above its own reset height, and
@@ -75,6 +76,9 @@ PYTHONPATH=/root/vlaTraining/cap-x python3 -u -m capx.envs.launch \
   - Shape prompt now uses `sample_grasp_pose("object")` as primary grasp target (instead of deriving grasp Z from `get_object_pose + size`).
   - `sample_grasp_pose()` now accepts `"object"` aliases directly.
   - Smoke test: `benchmark_shape_smoke_promptfix.log` completed with `1/1` task-complete.
+- **Output cleanup:** Archived overlapping prior trial folders under:
+  - `outputs/ollama_qwen2.5-coder:7b-instruct-q4_K_M/qwen_shape_generalization/archive_20260405_072609_pre_promptfix_cleanup`
+  - kept only the latest run's 30 trial folders in `qwen_shape_generalization/`.
 
 ### Next step: re-run benchmark with corrected success metric
 ```bash

@@ -65,7 +65,7 @@ Enable a robot arm to pick up objects of **arbitrary shapes and sizes** using a 
 
 **Expected outcome:** Demonstrates that natural language shape description enables zero-shot grasp adaptation. Even partial success (e.g., 40% box, 20% cylinder, 10% sphere) is a publishable result showing the LLM generalizes.
 
-**Current result (April 5, 2026):** 30-trial run completed with **6/30 (20%)** task completion and average reward **0.236** using `franka_qwen_shape.yaml` at temperature `0.3`.
+**Current result (April 5, 2026):** 30-trial run completed with **25/30 (83.3%)** task completion and average reward **0.871** using `franka_qwen_shape.yaml` at temperature `0.3` after prompt/API fix (`sample_grasp_pose("object")` path).
 
 **Important finding:** The original success criterion used a fixed threshold `object_center_z > table_z + 0.04`. With randomized tall objects, this can overcount success. Success logic has now been updated in `LiftShape` to require:
 - object lifted at least `0.04m` above its own reset height, and
@@ -133,4 +133,4 @@ This makes the head-to-head comparison (RL vs. CaP-X on arbitrary shapes) scient
 
 ## Immediate Next Step
 
-**Phase 2 follow-up:** Re-run the 30-trial mixed-shape benchmark with corrected success logic, then report updated aggregate + per-shape metrics.
+**Phase 2 follow-up:** Add explicit per-trial shape logging (shape + size + success flag) and rerun / post-process results to report box/cylinder/ball success breakdown cleanly.
